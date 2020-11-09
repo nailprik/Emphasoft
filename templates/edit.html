@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Изменить данные
+{% endblock %}
+
+{% block body %}
+    <form action="" method=post enctype=multipart/form-data>
+        <p><input type=file name=file></p>
+      {% if user.l_name %}
+      <input type="text" name="l_name" value="{{user.l_name}}" placeholder="Фамилия"><br>
+      <input type="text" name="f_name" value="{{user.f_name}}" placeholder="Имя"><br>
+      <input type="text" name="m_name" value="{{user.m_name}}" placeholder="Отчество"><br>
+      <textarea name="about"  placeholder="О себе">{{user.about}}</textarea><br>
+      {% else %}
+      <input type="text" name="l_name" value="" placeholder="Фамилия"><br>
+      <input type="text" name="f_name" value="" placeholder="Имя"><br>
+      <input type="text" name="m_name" value="" placeholder="Отчество"><br>
+      <textarea name="about"  placeholder="О себе"></textarea><br>
+      {% endif %}
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

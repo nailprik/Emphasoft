@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Список пользователей
+{% endblock %}
+
+{% block body %}
+    {% if users|length >= 1 %}
+<h2>Список пользователей</h2>
+        <table border="1" width="50%" align="center">
+            <tr>
+                <th>id</th>
+                <th>ФИО</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td><a href="/users/{{user.id}}">{{user.l_name}} {{user.f_name}} {{user.m_name}}</a></td>
+            </tr>
+            {% endfor %}
+         </table>
+    {% else %}
+            <h1>Нет ни одного авторизованного пользователя</h1>
+    {% endif %}
+{% endblock %}

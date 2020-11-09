@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{user.l_name}} {{user.f_name}} {{user.m_name}}
+{% endblock %}
+
+{% block body %}
+{% if not user.avatar %}
+<p class="pic"><img src={{url_for('images',filename="default.png")}} width="255" height="255" align="middle" alt="default"></p>
+{% else %}
+<p class="pic"><img src={{url_for('images',filename=user.avatar)}} width="255" height="255" align="middle" alt=Avatar></p>
+{% endif %}
+
+<p>Фамилия {{user.l_name}}</p>
+    <p>Имя: {{user.f_name}}</p>
+    <p>Отчество: {{user.m_name}}</p>
+    <p>О себе:</p>
+    <p>{{user.about}}</p>
+{% if current_user.id == user.id %}
+    <a href="/users/{{user.id}}/edit">Именить</a>
+{% endif %}
+{% endblock %}
