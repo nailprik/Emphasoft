@@ -4,6 +4,7 @@ from flask_login import LoginManager, UserMixin, current_user, login_user, logou
 from oauth1 import OAuthSignIn
 from werkzeug.utils import secure_filename
 import os
+import config
 
 app = Flask(__name__)
 app.secret_key = '1234'
@@ -12,8 +13,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['OAUTH_CREDENTIALS'] = {
     'google': {
-        'id': '483369488098-bolg2ajue9pb71dqo9cdion87avpdu09.apps.googleusercontent.com',
-        'secret': 'tSGMt4t1u2t9TJQ7v23_7Lg1'
+        'id': config.GOOGLE_ID,
+        'secret': config.GOOGLE_SECRET
     },
     'github': {
         'id': '',
